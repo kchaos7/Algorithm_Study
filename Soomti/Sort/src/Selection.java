@@ -1,9 +1,53 @@
+import java.util.Arrays;
 
 public class Selection 
 {
 	public static void main(String[] args) 
 	{
 		
+		int[] array = new int[]{2,5,1,4,3};
+		
+		Selection.sort_1(array);
+		
+		System.out.println("Result="+Arrays.toString(array));
 	}
 
+	//1차 Test Code
+	//느낀점&고치고싶었던점
+	//1. 허접한 코딩 실력 체감 ㅠ.
+	//2. Boolean ok 사용안하고 코딩하고싶다.
+	//3. 더 간단히 하는 방법이 있을텐데 생각이 안남...
+	public static void sort_1(int[] array)
+	{
+
+		int min = array[0];	//최소 값을 저장하고 있을변수	
+		int index = 0;		//swap 할 index 
+		boolean ok = false; //swap 할지 말지 flag 변
+		
+		//n-1번 반
+		for(int i=0;i<array.length-1;i++)
+		{
+			for(int j=i; j<array.length-1;j++)
+			{
+				if(min>array[j+1])
+				{
+					min = array[j+1];
+					index = j+1;
+					ok =true;				
+				}
+			}
+			//ok가 아닐시 건너뛴다. 
+			if(ok)
+			{
+				int tmp = array[i];	
+				array[i]=array[index];
+				array[index] = tmp;	
+				
+				min= array[i+1]; 
+				
+				ok = false;
+			}
+		}
+		
+	}
 }
